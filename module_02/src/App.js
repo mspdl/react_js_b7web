@@ -1,23 +1,31 @@
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Using Class
+/*
+class App extends React.Component {
+
+  render() {
+    return <h1>Test 1, 2, 3 ...</h1>
+  }
+
 }
+*/
+
+// Using Function
+/* 
+function App(){
+  return <h1>Test 4, 5, 6 ...</h1>
+}
+*/
+
+//  Using Variable
+/*
+let App = () => {
+  return <h1>Test 7, 8, 9 ...</h1>
+}
+*/
+
+// Using Variable - Shorter
+let App = () => <h1>Test 10, 11, 12 ...</h1>
 
 export default App;
