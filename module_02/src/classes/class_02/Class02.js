@@ -2,7 +2,7 @@ import React from 'react';
 
 // Using Class
 /*
-class App extends React.Component {
+class Class02 extends React.Component {
 
   render() {
     return <h1>Test 1, 2, 3 ...</h1>
@@ -13,19 +13,19 @@ class App extends React.Component {
 
 // Using Function
 /* 
-function App(){
+function Class02(){
   return <h1>Test 4, 5, 6 ...</h1>
 }
 */
 
 //  Using Variable
 /*
-let App = () => {
+let Class02 = () => {
   return <h1>Test 7, 8, 9 ...</h1>
 }
 */
 
 // Using Variable - Shorter
-let App = () => <h1>Test 10, 11, 12 ...</h1>
+let Class02 = () => <h1>Test 10, 11, 12 ...</h1>
 
-export default App;
+export default Class02;
