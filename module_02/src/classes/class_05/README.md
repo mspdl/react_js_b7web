@@ -1,4 +1,4 @@
-### English - #4: Components and Props
+### English - #5: Components and Props
 - firstly through CSS, that is, create a CSS file and import it into the component (more organized, personally I prefer this one)
 - another way is the stylesheet
      - inside the div a style property is inserted and inside that property a json object is added
