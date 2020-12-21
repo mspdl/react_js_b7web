@@ -1,5 +1,4 @@
 import React from 'react'
-import './Class06.css'
 import styled from 'styled-components'
 
 const Title = styled.h1`

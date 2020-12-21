@@ -1,5 +1,4 @@
 import React from 'react'
-import './Class07.css'
 import styled from 'styled-components'
 
 const Site = styled.div`
