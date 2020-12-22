@@ -10,7 +10,8 @@ import ReactDOM from 'react-dom';
 // import Class07 from './classes/class_07/Class07';
 // import Class08 from './classes/class_08/Class08';
 // import Class09 from './classes/class_09/Class09';
-import Class10 from './classes/class_10/Class10';
+// import Class10 from './classes/class_10/Class10';
+import Class11 from './classes/class_11/Class11';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,7 +25,8 @@ ReactDOM.render(
     {/* <Class07 /> */}
     {/* <Class08 /> */}
     {/* <Class09 /> */}
-    <Class10 />
+    {/* <Class10 /> */}
+    <Class11 />
   </React.StrictMode>,
   document.getElementById('root')
 );
