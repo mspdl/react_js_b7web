@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './bootstrap.css'
+import './global.css'
+
 // import App from './App';
 // import Class01 from './classes/class_01/Class01';
 // import Class02 from './classes/class_02/Class02';
@@ -11,7 +14,8 @@ import ReactDOM from 'react-dom';
 // import Class08 from './classes/class_08/Class08';
 // import Class09 from './classes/class_09/Class09';
 // import Class10 from './classes/class_10/Class10';
-import Class11 from './classes/class_11/Class11';
+// import Class11 from './classes/class_11/Class11';
+import Class12 from './classes/class_12/Class12';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,7 +30,8 @@ ReactDOM.render(
     {/* <Class08 /> */}
     {/* <Class09 /> */}
     {/* <Class10 /> */}
-    <Class11 />
+    {/* <Class11 /> */}
+    <Class12 />
   </React.StrictMode>,
   document.getElementById('root')
 );
