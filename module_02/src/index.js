@@ -27,7 +27,8 @@ import './global.css'
 // import Class21 from './classes/class_21/Class21';
 // import Class22 from './classes/class_22/Class22';
 // import Class23 from './classes/class_23/Class23';
-import Class24 from './classes/class_24/Class24';
+// import Class24 from './classes/class_24/Class24';
+import Class25 from './classes/class_25/Class25';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -55,7 +56,8 @@ ReactDOM.render(
     {/* <Class21 /> */}
     {/* <Class22 /> */}
     {/* <Class23 /> */}
-    <Class24 />
+    {/* <Class24 /> */}
+    <Class25 />
   </React.StrictMode>,
   document.getElementById('root')
 );
