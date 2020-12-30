@@ -10,7 +10,8 @@ import Reducers from './reducers';
 // import Class02 from './classes/class_02/Class02';
 // import Class03 from './classes/class_03/Class03';
 // import Class04 from './classes/class_04/Class04';
-import Class05 from './classes/class_05/Class05';
+// import Class05 from './classes/class_05/Class05';
+import Class06 from './classes/class_06/Class06';
 
 const store = createStore(Reducers)
 
@@ -20,7 +21,8 @@ ReactDOM.render(
     {/* {<Class02 />} */}
     {/* {<Class03 />} */}
     {/* {<Class04 />} */}
-    {<Class05 />}
+    {/* {<Class05 />} */}
+    {<Class06 />}
   </Provider>,
   document.getElementById('root')
 );
