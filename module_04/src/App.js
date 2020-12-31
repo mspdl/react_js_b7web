@@ -1,12 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import Routers from './Routers'
 
 function App() {
 
-  let user = useSelector(state => state.user)
-
   return <>
-    <h1>Testing user email: {user.email}</h1>
+    <BrowserRouter>
+      <Routers />
+    </BrowserRouter>
   </>
 }
 
