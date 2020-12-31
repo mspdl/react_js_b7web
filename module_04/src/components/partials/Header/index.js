@@ -1,11 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './index.css'
+import { HeaderArea } from './styled.js'
 
 function Header() {
-
     return <>
-        <div className='header-area'>
+        <HeaderArea>
             <div className='container'>
                 <div className='logo'>
                     <Link to='/'>
@@ -14,8 +13,21 @@ function Header() {
                         <span className='logo-3'>Z</span>
                     </Link>
                 </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to=''>Login</Link>
+                        </li>
+                        <li>
+                            <Link to=''>Register</Link>
+                        </li>
+                        <li>
+                            <Link to='' className='add-ad-button'>Add an ad</Link>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-        </div>
+        </HeaderArea>
     </>
 }
 
