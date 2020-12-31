@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import About from './pages/About'
 import Home from './pages/Home'
 
-function Routers() {
+function Routes() {
     return <>
         <Switch>
             <Route exact path="/">
@@ -16,4 +16,4 @@ function Routers() {
     </>
 }
 
-export default Routers
+export default Routes
