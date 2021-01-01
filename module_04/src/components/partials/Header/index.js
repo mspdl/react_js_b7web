@@ -1,8 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { HeaderArea } from './styled.js'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import isLogged from '../../../helpers/AuthHandler';
+import { HeaderArea } from './styled.js';
 
 function Header() {
+
+    let logged = isLogged();
+
     return <>
         <HeaderArea>
             <div className='container'>
@@ -15,15 +19,28 @@ function Header() {
                 </div>
                 <nav>
                     <ul>
-                        <li>
-                            <Link to=''>Login</Link>
-                        </li>
-                        <li>
-                            <Link to=''>Register</Link>
-                        </li>
-                        <li>
-                            <Link to='' className='add-ad-button'>Add an ad</Link>
-                        </li>
+                        {!logged && <>
+                            <li>
+                                <Link to='/login'>Login</Link>
+                            </li>
+                            <li>
+                                <Link to='/register'>Register</Link>
+                            </li>
+                            <li>
+                                <Link to='/login' className='add-ad-button'>Add an ad</Link>
+                            </li>
+                        </>}
+                        {logged && <>
+                            <li>
+                                <Link to='/my-account'>My Account</Link>
+                            </li>
+                            <li>
+                                <Link to='/logout'>Logout</Link>
+                            </li>
+                            <li>
+                                <Link to='/post-an-add' className='add-ad-button'>Add an ad</Link>
+                            </li>
+                        </>}
                     </ul>
                 </nav>
             </div>
