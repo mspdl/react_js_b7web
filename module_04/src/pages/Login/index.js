@@ -15,18 +15,16 @@ function Login() {
     const [error, setError] = useState('')
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
         setDisabled(true);
-
         const json = await api.login(email, password);
-
         if (json.error) {
             setError(json.error);
         } else {
             doLogin(json.token, keepPassword);
             window.location.href = '/';
         }
+        setDisabled(false);
     }
 
     return <>

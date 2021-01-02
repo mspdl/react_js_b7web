@@ -1,10 +1,54 @@
-const OlzAPI = {
-    login: async (email, password) => {
-        return {error: 'Incomplete functionality.'}
+import Cookies from 'js-cookie'
+import qs from 'qs'
+const BASEAPI = "http://alunos.b7web.com.br:501"
+
+const apiFetchPost = async (endpoint, body) => {
+    if (!body.token) {
+        let token = Cookies.get('token');
+        if (token) {
+            body.token = token;
+        }
     }
+    const res = await fetch(BASEAPI + endpoint, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    });
+    const json = await res.json();
+    if (json.notallowed) {
+        window.location.href = '/login';
+        return;
+    }
+    return json;
 }
 
-// http://alunos.b7web.com.br:501
-// http://localhost:3001
+const apiFetchGet = async (endpoint, body = []) => {
+    if (!body.token) {
+        let token = Cookies.get('token');
+        if (token) {
+            body.token = token;
+        }
+    }
+    const res = await fetch(`${BASEAPI + endpoint}?${qs.stringify(body)}`);
+    const json = await res.json();
+    if (json.notallowed) {
+        window.location.href = '/login';
+        return;
+    }
+    return json;
+}
+
+const OlzAPI = {
+    login: async (email, password) => {
+        const json = await apiFetchPost(
+            '/user/sigin',
+            { email, password }
+        );
+        return json;
+    }
+}
 
 export default () => OlzAPI
