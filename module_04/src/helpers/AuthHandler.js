@@ -1,8 +1,14 @@
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
-function isLogged() {
+export function isLogged() {
     let token = Cookies.get('token')
     return (token) ? true : false;
 }
 
-export default isLogged
+export function doLogin(token, keepPassword = false) {
+    if (keepPassword) {
+        Cookies.set('token', token, { expires: 30 })
+    } else {
+        Cookies.set('token', token)
+    }
+}

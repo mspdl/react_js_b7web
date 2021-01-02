@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import isLogged from '../../../helpers/AuthHandler';
+import { isLogged } from '../../../helpers/AuthHandler';
 import { HeaderArea } from './styled.js';
 
 function Header() {
