@@ -4,4 +4,7 @@ const OlzAPI = {
     }
 }
 
+// http://alunos.b7web.com.br:501
+// http://localhost:3001
+
 export default () => OlzAPI
