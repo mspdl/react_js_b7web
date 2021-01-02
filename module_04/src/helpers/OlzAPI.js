@@ -1,6 +1,6 @@
 const OlzAPI = {
     login: async (email, password) => {
-        return {}
+        return {error: 'Incomplete functionality.'}
     }
 }
 

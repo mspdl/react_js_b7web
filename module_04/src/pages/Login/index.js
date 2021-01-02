@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { PageContainer, PageTitle } from '../../components/MainComponents.js'
+import { ErrorMessage, PageContainer, PageTitle } from '../../components/MainComponents.js'
 import { doLogin } from '../../helpers/AuthHandler'
 import useApi from '../../helpers/OlzAPI'
 import { PageArea } from './styled.js'
@@ -15,7 +15,7 @@ function Login() {
     const [error, setError] = useState('')
 
     const handleSubmit = async (e) => {
-        
+
         e.preventDefault();
         setDisabled(true);
 
@@ -33,23 +33,44 @@ function Login() {
         <PageContainer>
             <PageTitle>Login</PageTitle>
             <PageArea>
+
+                {error &&
+                    <ErrorMessage>{error}</ErrorMessage>
+                }
                 <form onSubmit={handleSubmit}>
                     <label className="area">
                         <div className="area-title">E-mail</div>
                         <div className="area-input">
-                            <input type="email" disabled={disabled} />
+                            <input
+                                type="email"
+                                disabled={disabled}
+                                value={email}
+                                onChange={(e) => { setEmail(e.target.value) }}
+                                required
+                            />
                         </div>
                     </label>
                     <label className="area">
                         <div className="area-title">Password</div>
                         <div className="area-input">
-                            <input type="password" disabled={disabled} />
+                            <input
+                                type="password"
+                                disabled={disabled}
+                                value={password}
+                                onChange={(e) => { setPassword(e.target.value) }}
+                                required
+                            />
                         </div>
                     </label>
                     <label className="area">
                         <div className="area-title">Keep Password</div>
                         <div className="area-input">
-                            <input type="checkbox" disabled={disabled} />
+                            <input
+                                type="checkbox"
+                                disabled={disabled}
+                                checked={keepPassword}
+                                onChange={() => { setKeepPassword(!keepPassword) }}
+                            />
                         </div>
                     </label>
                     <label className="area">
