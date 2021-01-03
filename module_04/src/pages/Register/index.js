@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ErrorMessage, PageContainer, PageTitle } from '../../components/MainComponents.js'
+import { doLogin } from '../../helpers/AuthHandler'
 import { useApi } from '../../helpers/OlzAPI'
 import { PageArea } from './styled.js'
 
@@ -29,7 +30,22 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setDisabled(true);
+        setError('')
         setDisabled(false);
+
+        if (password !== confirmPassword) {
+            setError("The passwords entered do not match");
+            return;
+        }
+
+        const json = await api.register(name, stateLoc, email, password);
+
+        if (json.error) {
+            setError(json.error);
+        } else {
+            doLogin(json.token);
+            window.location.href = '/';
+        }
     }
 
     return <>

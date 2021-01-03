@@ -10,6 +10,14 @@ export const useApi = () => {
             return json;
         },
 
+        register: async (name, stateLoc, email, password) => {
+            const json = await apiFetchPost(
+                '/user/signup',
+                { name, email, password, state: stateLoc }
+            )
+            return json;
+        },
+
         getStates: async () => {
             const json = await apiFetchGet(
                 '/states'
