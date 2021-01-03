@@ -7,7 +7,7 @@ function Header() {
 
     let logged = isLogged();
 
-    function handleLogout(){
+    function handleLogout() {
         doLogout();
         window.location.href = '/';
     }

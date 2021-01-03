@@ -53,15 +53,7 @@ export const PageArea = styled.div`
                         background-color: #006FCE;
                     }
                 }
-
             }
-
         }
-
     }
-
-    .keep-password-checkbox {
-        width: auto !important;
-    }
-
 `
