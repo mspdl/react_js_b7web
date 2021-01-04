@@ -84,6 +84,10 @@ export const PageArea = styled.div`
     .list {
         display: flex;
         flex-wrap: wrap;
+
+        .ad-item {
+            width: 25%;
+        }
     }
 
     .see-all-link {
