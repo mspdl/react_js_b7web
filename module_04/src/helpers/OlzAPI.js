@@ -1,4 +1,4 @@
-import { apiFetchGet, apiFetchPost } from './GenericAPI'
+import { apiFetchGet, apiFetchPost } from './GenericAPI';
 
 export const useApi = () => {
     return {
@@ -23,6 +23,13 @@ export const useApi = () => {
                 '/states'
             );
             return json.states;
+        },
+
+        getCategories: async () => {
+            const json = await apiFetchGet(
+                '/categories'
+            );
+            return json.categories;
         }
     }
 }
