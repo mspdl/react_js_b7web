@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PageContainer } from '../../components/MainComponents.js';
+import AdItem from '../../components/partials/AdItem';
 import { useApi } from '../../helpers/OlzAPI';
 import { PageArea, SearchArea } from './styled.js';
 
@@ -10,6 +11,7 @@ function Home() {
 
     const [stateList, setStateList] = useState([])
     const [categories, setCategories] = useState([])
+    const [adList, setAdList] = useState([])
 
     useEffect(() => {
         const getStates = async () => {
@@ -25,6 +27,17 @@ function Home() {
             setCategories(cats);
         }
         getCategories();
+    }, [])
+
+    useEffect(() => {
+        const getRecentAds = async () => {
+            const json = await api.getAds({
+                sort: 'desc',
+                limit: 8
+            });
+            setAdList(json.ads);
+        }
+        getRecentAds();
     }, [])
 
     return <>
@@ -53,7 +66,17 @@ function Home() {
         </SearchArea>
         <PageContainer>
             <PageArea>
-                ...
+                <h2>Recent Ads</h2>
+                <div className="ad-list">
+                    {adList.map((ad, key) =>
+                        <AdItem key={key} data={ad} />
+                    )}
+                </div>
+                <Link to="/ads" className='see-all-link'>See All</Link>
+
+                <hr />
+
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
             </PageArea>
         </PageContainer>
     </>
