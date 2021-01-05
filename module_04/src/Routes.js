@@ -1,10 +1,11 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import About from './pages/About'
+import AdPage from './pages/AdPage'
 import Home from './pages/Home'
 import Login from './pages/Login'
-import Register from './pages/Register'
 import NotFound from './pages/NotFound'
+import Register from './pages/Register'
 
 function Routes() {
     return <>
@@ -20,6 +21,9 @@ function Routes() {
             </Route>
             <Route exact path='/register'>
                 <Register />
+            </Route>
+            <Route exact path='/ad/:id'>
+                <AdPage />
             </Route>
             <Route>
                 <NotFound />

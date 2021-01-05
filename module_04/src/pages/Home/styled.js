@@ -81,13 +81,10 @@ export const PageArea = styled.div`
         font-size: 20px;
     }
 
-    .list {
+    .ad-list {
         display: flex;
         flex-wrap: wrap;
 
-        .ad-item {
-            width: 25%;
-        }
     }
 
     .see-all-link {

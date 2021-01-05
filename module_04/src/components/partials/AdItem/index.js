@@ -12,7 +12,7 @@ function AdItem(props) {
     }
 
     return <>
-        <Item className="ad-item">
+        <Item>
             <Link to={`/ad/${props.data.id}`}>
                 <div className="item-img">
                     <img src={props.data.image} alt="" />

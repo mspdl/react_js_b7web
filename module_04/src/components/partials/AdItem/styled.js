@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const Item = styled.div`
+    width: 25%;
+
     a {
         display: block;
         border: 1px solid #FFF;
