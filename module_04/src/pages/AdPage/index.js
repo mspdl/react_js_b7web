@@ -1,11 +1,12 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { PageContainer } from '../../components/MainComponents.js';
+import AdItem from '../../components/partials/AdItem';
 import { useApi } from '../../helpers/OlzAPI';
-import { Fake, PageArea } from './styled.js';
+import { BreadCrumb, Fake, OthersArea, PageArea } from './styled.js';
 
 function AdPage() {
 
@@ -27,6 +28,13 @@ function AdPage() {
 
     return <>
         <PageContainer>
+            <BreadCrumb>
+                You are here:&nbsp;
+                <Link to="/">Home</Link>
+                /<Link to={`/ads?state=${adInfo.stateName}`}>{adInfo.stateName}</Link>
+                {adInfo.category && <>/<Link to={`/ads?state=${adInfo.stateName}&cat=${adInfo.category.slug}`}>{adInfo.category.name}</Link ></>}
+                /&nbsp;<strong>{adInfo.title}</strong>
+            </BreadCrumb>
             <PageArea>
                 <div className="left-side">
                     <div className="box">
@@ -79,6 +87,16 @@ function AdPage() {
                     </>}
                 </div>
             </PageArea>
+            <OthersArea>
+                {adInfo.others && <>
+                    <h2>More ads from this seller</h2>
+                    <div className="list">
+                        {adInfo.others.map((ad, index) =>
+                            <AdItem key={index} data={ad} />
+                        )}
+                    </div>
+                </>}
+            </OthersArea>
         </PageContainer>
     </>
 }
