@@ -63,10 +63,20 @@ function AdPage() {
                 <div className="right-side">
                     <div className="box box-padding">
                         {loading && <Fake height={20} />}
+                        {adInfo.priceNegotiable && "Negotiable Price"}
+                        {!adInfo.priceNegotiable && adInfo.price &&
+                            <div className="price">Price: <span>{parseInt(adInfo.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></div>
+                        }
                     </div>
-                    <div className="box box-padding">
-                        {loading && <Fake height={50} />}
-                    </div>
+                    {loading && <Fake height={50} />}
+                    {adInfo.userInfo && <>
+                        <a href={`mailto:${adInfo.userInfo.email}`} target="_blank" className="contact-seller-link">Contact Seller</a>
+                        <div className="box box-padding">
+                            <strong>{adInfo.userInfo.name}</strong>
+                            <small>E-mail: {adInfo.userInfo.email}</small>
+                            <small>Estate: {adInfo.stateName}</small>
+                        </div>
+                    </>}
                 </div>
             </PageArea>
         </PageContainer>
