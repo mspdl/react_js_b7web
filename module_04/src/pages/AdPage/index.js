@@ -1,9 +1,11 @@
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
 import { PageContainer } from '../../components/MainComponents.js';
 import { useApi } from '../../helpers/OlzAPI';
-import { PageArea, Fake } from './styled.js';
-import moment from 'moment'
+import { Fake, PageArea } from './styled.js';
 
 function AdPage() {
 
@@ -23,12 +25,6 @@ function AdPage() {
         getAdInfo(id);
     }, [])
 
-    const formatDate = (date) => {
-        let formatedDate = new Date(date);
-
-
-    }
-
     return <>
         <PageContainer>
             <PageArea>
@@ -37,17 +33,19 @@ function AdPage() {
                         <div className="ad-image">
                             {loading && <Fake height={300} />}
                             {adInfo.images &&
-                                adInfo.images.map((adImage, index) => {
-                                    <img key={index} src={adImage} alt="" />
-                                })
+                                <Slide>
+                                    {adInfo.images.map((adImage, index) =>
+                                        <div key={index} className="each-slide">
+                                            <img src={adImage} alt="" />
+                                        </div>
+                                    )}
+                                </Slide>
                             }
                         </div>
                         <div className="ad-info">
                             <div className="ad-name">
                                 {loading && <Fake height={20} />}
-                                {adInfo.title &&
-                                    <h2>{adInfo.title}</h2>
-                                }
+                                {adInfo.title && <h2>{adInfo.title}</h2>}
                                 {adInfo.dateCreated &&
                                     <small>Created Date: {moment(adInfo.dateCreated).fromNow()}</small>
                                 }
