@@ -27,11 +27,11 @@ function Login() {
             doLogin(json.token, keepPassword);
             window.location.href = '/';
         }
-        
+
         setDisabled(false);
     }
 
-    return <>
+    return (
         <PageContainer>
             <PageTitle>Login</PageTitle>
             <PageArea>
@@ -85,7 +85,7 @@ function Login() {
                 </form>
             </PageArea>
         </PageContainer>
-    </>
+    );
 }
 
 export default Login

@@ -11,7 +11,7 @@ function AdItem(props) {
         price = parseInt(props.data.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 
-    return <>
+    return (
         <Item>
             <Link to={`/ad/${props.data.id}`}>
                 <div className="item-img">
@@ -21,8 +21,7 @@ function AdItem(props) {
                 <div className="item-price">{price}</div>
             </Link>
         </Item>
-    </>
-
+    );
 }
 
 export default AdItem

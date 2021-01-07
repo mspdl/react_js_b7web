@@ -3,11 +3,11 @@ import './index.css'
 
 function Footer() {
 
-    return <>
+    return (
         <div className='FooterArea'>
             Footer
         </div>
-    </>
+    )
 }
 
 export default Footer

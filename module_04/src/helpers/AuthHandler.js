@@ -1,11 +1,11 @@
 import Cookies from 'js-cookie';
 
-export function isLogged() {
+export const isLogged = () => {
     let token = Cookies.get('token')
     return (token) ? true : false;
 }
 
-export function doLogin(token, keepPassword = false) {
+export const doLogin = (token, keepPassword = false) => {
     if (keepPassword) {
         Cookies.set('token', token, { expires: 30 })
     } else {

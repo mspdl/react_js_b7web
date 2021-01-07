@@ -12,7 +12,7 @@ function Header() {
         window.location.href = '/';
     }
 
-    return <>
+    return (
         <HeaderArea>
             <div className='container'>
                 <div className='logo'>
@@ -50,7 +50,7 @@ function Header() {
                 </nav>
             </div>
         </HeaderArea>
-    </>
+    )
 }
 
 export default Header

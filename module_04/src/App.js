@@ -7,7 +7,7 @@ import Header from './components/partials/Header'
 import Routes from './Routes'
 function App() {
 
-  return <>
+  return (
     <BrowserRouter>
       <Template>
         <Header />
@@ -15,7 +15,7 @@ function App() {
         <Footer />
       </Template>
     </BrowserRouter>
-  </>
+  );
 }
 
 export default App
