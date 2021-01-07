@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch } from 'react-router-dom'
 import RouteHandler from './components/RouteHandler'
 import About from './pages/About'
+import AddAd from './pages/AddAd'
 import AdPage from './pages/AdPage'
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -27,7 +28,7 @@ function Routes() {
                 <AdPage />
             </RouteHandler>
             <RouteHandler private exact path='/post-an-add'>
-                <About />
+                <AddAd />
             </RouteHandler>
             <RouteHandler>
                 <NotFound />
