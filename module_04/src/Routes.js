@@ -4,6 +4,7 @@ import RouteHandler from './components/RouteHandler'
 import About from './pages/About'
 import AddAd from './pages/AddAd'
 import AdPage from './pages/AdPage'
+import Ads from './pages/Ads'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
@@ -26,6 +27,9 @@ function Routes() {
             </RouteHandler>
             <RouteHandler exact path='/ad/:id'>
                 <AdPage />
+            </RouteHandler>
+            <RouteHandler exact path='/ads'>
+                <Ads />
             </RouteHandler>
             <RouteHandler private exact path='/post-an-add'>
                 <AddAd />
