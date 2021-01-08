@@ -35,7 +35,6 @@ function Login() {
         <PageContainer>
             <PageTitle>Login</PageTitle>
             <PageArea>
-
                 {error &&
                     <ErrorMessage>{error}</ErrorMessage>
                 }

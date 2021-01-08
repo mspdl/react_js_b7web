@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import MaskedInput from 'react-text-mask';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import { ErrorMessage, PageContainer, PageTitle } from '../../components/MainComponents.js';
@@ -8,8 +9,8 @@ import { PageArea } from './styled.js';
 export default function AddAd() {
 
     const api = useApi();
-
     const fileField = useRef();
+    const history = useHistory();
 
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState('');
@@ -31,19 +32,48 @@ export default function AddAd() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setDisabled(true);
-        setError('')
+        setError('');
 
-        /*
-        const json = await api.login(email, password);
+        let errors = [];
 
-        if (json.error) {
-            setError(json.error);
-        } else {
-            doLogin(json.token, keepPassword);
-            window.location.href = '/';
+        if (!title.trim()) {
+            errors.push('Insert a title');
         }
-        */
-        setDisabled(false);
+
+        if (!category.trim()) {
+            errors.push('Select a category');
+        }
+
+        if (errors.length === 0) {
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('price', price);
+            formData.append('priceneg', priceNegotiable);
+            formData.append('desc', description);
+            formData.append('cat', category);
+
+
+            if (fileField.current.files.length > 0) {
+                for (let i = 0; i < fileField.current.files.length; i++) {
+                    formData.append('img', fileField.current.files[i]);
+                }
+            }
+
+            const json = await api.addAd(formData);
+
+            if (!json.error) {
+                history.push(`/ad/${json.id}`);
+                return;
+            } else {
+                setError(json.error);
+            }
+
+        } else {
+            setError(errors.join("\n"));
+        }
+
+        setDisabled(false)
+
     }
 
     const priceMask = createNumberMask({

@@ -19,7 +19,6 @@ function AdPage() {
     useEffect(() => {
         const getAdInfo = async (id) => {
             const json = await api.getAd(id, true);
-            console.log(json)
             setAdInfo(json);
             setLoading(false);
         }

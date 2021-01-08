@@ -40,3 +40,22 @@ export const apiFetchGet = async (endpoint, body = []) => {
     }
     return json;
 }
+
+export const apiFetchFile = async (endpoint, body) => {
+    if (!body.token) {
+        let token = Cookies.get('token');
+        if (token) {
+            body.append('token', token);
+        }
+    }
+    const res = await fetch(BASEAPI + endpoint, {
+        method: 'POST',
+        body
+    });
+    const json = await res.json();
+    if (json.notallowed) {
+        window.location.href = '/login';
+        return;
+    }
+    return json;
+}

@@ -1,4 +1,4 @@
-import { apiFetchGet, apiFetchPost } from './GenericAPI';
+import { apiFetchFile, apiFetchGet, apiFetchPost } from './GenericAPI';
 
 export const useApi = () => {
     return {
@@ -44,6 +44,14 @@ export const useApi = () => {
             const json = await apiFetchGet(
                 '/ad/item',
                 { id, other }
+            );
+            return json;
+        },
+
+        addAd: async (formData) => {
+            const json = await apiFetchFile(
+                '/ad/add',
+                formData
             );
             return json;
         }
