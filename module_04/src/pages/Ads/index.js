@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { PageContainer } from '../../components/MainComponents.js';
 import { useApi } from '../../helpers/OlzAPI';
 import { PageArea } from './styled.js';
@@ -6,6 +7,16 @@ import { PageArea } from './styled.js';
 export default function Ads() {
 
     const api = useApi();
+    const useQueryString = () => {
+        return new URLSearchParams(useLocation().search);
+    }
+
+    const query = useQueryString();
+
+    const [searchQuery, setSearchQuery] = useState(query.get('search-query') != null ? query.get('search-query') : '');
+    const [category, setCategory] = useState(query.get('cat') != null ? query.get('cat') : '');
+    const [state, setState] = useState(query.get('state') != null ? query.get('state') : '');
+
 
     const [stateList, setStateList] = useState([])
     const [categories, setCategories] = useState([])
@@ -43,9 +54,13 @@ export default function Ads() {
             <PageArea>
                 <div className="left-side">
                     <form method="GET">
-                        <input type="text" name="query" />
+                        <input
+                            type="text"
+                            name="search-query"
+                            placeholder="What are you looking for?"
+                            value={searchQuery} />
                         <div className="filter-name">State:</div>
-                        <select name="state">
+                        <select name="state" value={state}>
                             <option></option>
                             {stateList.map(state =>
                                 <option key={state._id} value={state.name}>{state.name}</option>
@@ -53,10 +68,10 @@ export default function Ads() {
                         </select>
                         <div className="filter-name">Category:</div>
                         <ul>
-                            {categories.map(category =>
-                                <li key={category._id} className="category-item">
-                                    <img src={category.img} alt={category.name}/>
-                                    <span>{category.name}</span>
+                            {categories.map(cat =>
+                                <li key={cat._id} className={category === cat.slug ? 'category-item active' : 'category-item'}>
+                                    <img src={cat.img} alt={cat.name} />
+                                    <span>{cat.name}</span>
                                 </li>
                             )}
                         </ul>

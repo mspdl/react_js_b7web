@@ -45,7 +45,7 @@ function Home() {
             <PageContainer>
                 <div className="search-box">
                     <form method="GET" action="/ads">
-                        <input type="text" name="q" placeholder="What do you need?"></input>
+                        <input type="text" name="search-query" placeholder="What do you need?"></input>
                         <select name="state">
                             {stateList.map((state, index) =>
                                 <option key={index} value={state.name}>{state.name}</option>
