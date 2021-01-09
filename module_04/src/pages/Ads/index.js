@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { PageContainer } from '../../components/MainComponents.js';
 import { useApi } from '../../helpers/OlzAPI';
 import { PageArea } from './styled.js';
@@ -7,6 +7,9 @@ import { PageArea } from './styled.js';
 export default function Ads() {
 
     const api = useApi();
+
+    const history = useHistory();
+
     const useQueryString = () => {
         return new URLSearchParams(useLocation().search);
     }
@@ -21,6 +24,22 @@ export default function Ads() {
     const [stateList, setStateList] = useState([])
     const [categories, setCategories] = useState([])
     const [adList, setAdList] = useState([])
+
+    useEffect(() => {
+        let queryString = [];
+        if (searchQuery) {
+            queryString.push(`search-query=${searchQuery}`)
+        }
+        if (category) {
+            queryString.push(`cat=${category}`)
+        }
+        if (state) {
+            queryString.push(`state=${state}`)
+        }
+        history.replace({
+            search: `?${queryString.join('&')}`
+        })
+    }, [searchQuery, category, state])
 
     useEffect(() => {
         const getStates = async () => {
@@ -58,9 +77,15 @@ export default function Ads() {
                             type="text"
                             name="search-query"
                             placeholder="What are you looking for?"
-                            value={searchQuery} />
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
                         <div className="filter-name">State:</div>
-                        <select name="state" value={state}>
+                        <select
+                            name="state"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                        >
                             <option></option>
                             {stateList.map(state =>
                                 <option key={state._id} value={state.name}>{state.name}</option>
@@ -69,7 +94,11 @@ export default function Ads() {
                         <div className="filter-name">Category:</div>
                         <ul>
                             {categories.map(cat =>
-                                <li key={cat._id} className={category === cat.slug ? 'category-item active' : 'category-item'}>
+                                <li
+                                    key={cat._id}
+                                    className={category === cat.slug ? 'category-item active' : 'category-item'}
+                                    onClick={() => setCategory(cat.slug)}
+                                >
                                     <img src={cat.img} alt={cat.name} />
                                     <span>{cat.name}</span>
                                 </li>
