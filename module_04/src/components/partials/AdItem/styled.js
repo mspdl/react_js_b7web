@@ -27,6 +27,5 @@ export const Item = styled.div`
         .item-name {
             font-weight: bold;
         }
-
     }
 `
