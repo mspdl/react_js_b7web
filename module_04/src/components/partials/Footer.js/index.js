@@ -1,13 +1,13 @@
 import React from 'react'
-import './index.css'
+import './styled.js'
+import { FooterArea } from './styled.js'
 
-function Footer() {
+export default function Footer() {
 
     return (
-        <div className='FooterArea'>
-            Footer
-        </div>
-    )
+        <FooterArea>
+            All rights reserved<br />
+                OLX Clone B7Web
+        </FooterArea>
+    );
 }
-
-export default Footer
