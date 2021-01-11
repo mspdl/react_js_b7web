@@ -22,14 +22,22 @@ export default function Ads() {
     const [category, setCategory] = useState(query.get('cat') != null ? query.get('cat') : '');
     const [state, setState] = useState(query.get('state') != null ? query.get('state') : '');
 
+    const [adsTotal, setAdsTotal] = useState(0);
     const [stateList, setStateList] = useState([]);
     const [categories, setCategories] = useState([]);
     const [adList, setAdList] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
 
     const [resultOpacity, setResultOpacity] = useState(1);
     const [loading, setLoading] = useState(true);
 
-    const getAdList = async () => {
+    let pagination = [];
+
+    for (let i = 1; i <= pageCount; i++) {
+        pagination.push(i);
+    }
+
+    async function getAdList() {
         setLoading(true);
         const json = await api.getAds({
             sort: 'desc',
@@ -39,9 +47,18 @@ export default function Ads() {
             state
         });
         setAdList(json.ads);
+        setAdsTotal(json.total);
         setResultOpacity(1);
         setLoading(false);
     }
+
+    useEffect(() => {
+        if (adList.length > 0) {
+            setPageCount(Math.ceil(adsTotal / adList.length));
+        } else {
+            setPageCount(0);
+        }
+    }, [adsTotal]);
 
     useEffect(() => {
         let queryString = [];
@@ -131,6 +148,14 @@ export default function Ads() {
                             <AdItem key={index} data={ad} />
                         )}
                     </div>
+
+                    {pageCount > 1 &&
+                        <div className="pagination">
+                            {pagination.map(page =>
+                                <div key={page} className="page-item">{page}</div>
+                            )}
+                        </div>
+                    }
                 </div>
             </PageArea>
         </PageContainer>
