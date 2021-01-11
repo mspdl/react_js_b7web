@@ -27,8 +27,10 @@ export default function Ads() {
     const [adList, setAdList] = useState([]);
 
     const [resultOpacity, setResultOpacity] = useState(1);
+    const [loading, setLoading] = useState(true);
 
     const getAdList = async () => {
+        setLoading(true);
         const json = await api.getAds({
             sort: 'desc',
             limit: 8,
@@ -38,6 +40,7 @@ export default function Ads() {
         });
         setAdList(json.ads);
         setResultOpacity(1);
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -117,6 +120,12 @@ export default function Ads() {
                 </div>
                 <div className="right-side">
                     <h2>Results</h2>
+                    {loading &&
+                        <div className="list-warning">Loading</div>
+                    }
+                    {!loading && adList.length === 0 &&
+                        <div className="list-warning">No results found.</div>
+                    }
                     <div className="list" style={{ opacity: resultOpacity }}>
                         {adList.map((ad, index) =>
                             <AdItem key={index} data={ad} />
