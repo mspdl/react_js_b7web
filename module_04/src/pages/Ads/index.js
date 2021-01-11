@@ -6,6 +6,7 @@ import { useApi } from '../../helpers/OlzAPI';
 import { PageArea } from './styled.js';
 
 let timer;
+const ITEMS_PER_PAGE = 8;
 
 export default function Ads() {
 
@@ -27,6 +28,7 @@ export default function Ads() {
     const [categories, setCategories] = useState([]);
     const [adList, setAdList] = useState([]);
     const [pageCount, setPageCount] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
 
     const [resultOpacity, setResultOpacity] = useState(1);
     const [loading, setLoading] = useState(true);
@@ -39,12 +41,14 @@ export default function Ads() {
 
     async function getAdList() {
         setLoading(true);
+        let offset = (currentPage -1) * ITEMS_PER_PAGE;
         const json = await api.getAds({
             sort: 'desc',
-            limit: 8,
+            limit: ITEMS_PER_PAGE,
             q: searchQuery,
             cat: category,
-            state
+            state,
+            offset: offset
         });
         setAdList(json.ads);
         setAdsTotal(json.total);
@@ -59,6 +63,11 @@ export default function Ads() {
             setPageCount(0);
         }
     }, [adsTotal]);
+
+    useEffect(() => {
+        setResultOpacity(0.3);
+        getAdList();
+    }, [currentPage])
 
     useEffect(() => {
         let queryString = [];
@@ -80,6 +89,7 @@ export default function Ads() {
         }
         timer = setTimeout(getAdList(), 20000);
         setResultOpacity(0.3);
+        setCurrentPage(1);
     }, [searchQuery, category, state])
 
     useEffect(() => {
@@ -137,7 +147,7 @@ export default function Ads() {
                 </div>
                 <div className="right-side">
                     <h2>Results</h2>
-                    {loading &&
+                    {loading && adList.length === 0 &&
                         <div className="list-warning">Loading</div>
                     }
                     {!loading && adList.length === 0 &&
@@ -152,7 +162,7 @@ export default function Ads() {
                     {pageCount > 1 &&
                         <div className="pagination">
                             {pagination.map(page =>
-                                <div key={page} className="page-item">{page}</div>
+                                <div onClick={() => setCurrentPage(page)} key={page} className={page === currentPage ? 'page-item active' : 'page-item'}>{page}</div>
                             )}
                         </div>
                     }
