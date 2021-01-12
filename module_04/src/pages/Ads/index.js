@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { PageContainer } from '../../components/MainComponents.js';
 import AdItem from '../../components/partials/AdItem';
+import Pagination from '../../components/partials/Pagination/index.js';
 import { useApi } from '../../helpers/OlzAPI';
 import { PageArea } from './styled.js';
 
@@ -41,7 +42,7 @@ export default function Ads() {
 
     async function getAdList() {
         setLoading(true);
-        let offset = (currentPage -1) * ITEMS_PER_PAGE;
+        let offset = (currentPage - 1) * ITEMS_PER_PAGE;
         const json = await api.getAds({
             sort: 'desc',
             limit: ITEMS_PER_PAGE,
@@ -159,13 +160,12 @@ export default function Ads() {
                         )}
                     </div>
 
-                    {pageCount > 1 &&
-                        <div className="pagination">
-                            {pagination.map(page =>
-                                <div onClick={() => setCurrentPage(page)} key={page} className={page === currentPage ? 'page-item active' : 'page-item'}>{page}</div>
-                            )}
-                        </div>
-                    }
+                    <Pagination
+                        currentPage={currentPage}
+                        pagination={pagination}
+                        pageCount={pageCount}
+                        setCurrentPage={setCurrentPage}
+                    />
                 </div>
             </PageArea>
         </PageContainer>
