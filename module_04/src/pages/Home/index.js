@@ -69,7 +69,7 @@ function Home() {
                 <h2>Recent Ads</h2>
                 <div className="ad-list">
                     {adList.map((ad, key) =>
-                        <AdItem className='ad-item' key={key} data={ad} />
+                        <AdItem key={key} data={ad} />
                     )}
                 </div>
                 <Link to="/ads" className='see-all-link'>See All</Link>

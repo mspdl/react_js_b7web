@@ -107,6 +107,9 @@ export const PageArea = styled.div`
         display: flex;
         flex-wrap: wrap;
 
+        .ad-item {
+            width: 25%;
+        }
     }
 
     .see-all-link {
@@ -118,7 +121,7 @@ export const PageArea = styled.div`
     }
     @media (max-width: 600px) {
         margin: 10px;
-        .list .ad-item{
+        .ad-list .ad-item{
             width: 50%
         }
     }
