@@ -11,7 +11,7 @@ export default ({ icon, link }) => {
 
     const handleLinkClick = (e) => {
         e.preventDefault();
-        history.push(link)
+        history.push(link);
     }
 
     return (
