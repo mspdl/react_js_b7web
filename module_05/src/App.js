@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Container, Menu, PageBody } from './AppStyled';
+import Cart from './components/Cart';
 import MenuItem from './components/MenuItem';
 import PrivateRoute from './components/PrivateRoute';
 import HomeScreen from './pages/HomeScreen';
@@ -21,16 +22,17 @@ export default () => {
                             <HomeScreen />
                         </Route>
                         <PrivateRoute path="/orders">
-                            <div>ORDERS' SCREEN</div>
+                            <div>ORDERS SCREEN</div>
                         </PrivateRoute>
                         <PrivateRoute path="/profile">
-                            <div>PROFILE'S SCREEN</div>
+                            <div>PROFILE SCREEN</div>
                         </PrivateRoute>
                         <Route path="/second-screen">
                             <SecondScreen />
                         </Route>
                     </Switch>
                 </PageBody>
+                <Cart />
             </Container>
         </BrowserRouter>
     );

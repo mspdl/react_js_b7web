@@ -4,8 +4,8 @@ import { Route, useHistory } from 'react-router-dom';
 
 export default ({ children, ...rest }) => {
 
-    const token = useSelector(state => state.user.token);
     const history = useHistory();
+    const token = useSelector(state => state.user.token);
 
     if (!token || token === '') {
         history.push('/login');
