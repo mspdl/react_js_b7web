@@ -1,13 +1,11 @@
 import React from 'react';
-import { useHistory, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import { Container, Titulo } from './styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import { Container, Title } from './styled';
 
 export default () => {
     const history = useHistory();
     const dispatch = useDispatch();
-
-    let { nome } = useParams();
 
     const name = useSelector(state => state.user.name);
 
@@ -22,11 +20,9 @@ export default () => {
 
     return (
         <Container>
-            <Titulo>Tela2 de {nome}</Titulo>
-
+            <Title>{name}'s Second Screen</Title>
             <input type="text" value={name} onChange={handleTextChange} />
-
-            <button onClick={()=>history.goBack()}>Voltar</button>
+            <button onClick={()=>history.goBack()}>Go Back</button>
         </Container>
     );
 }

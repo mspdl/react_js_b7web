@@ -1,15 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Container, Menu, PageBody } from './AppStyled';
 import MenuItem from './components/MenuItem';
 import HomeScreen from './pages/HomeScreen';
-import Tela2Screen from './pages/Tela2Screen';
-
+import SecondScreen from './pages/SecondScreen';
 
 export default () => {
-    const name = useSelector(state => state.user.name);
-
     return (
         <BrowserRouter>
             <Container>
@@ -23,8 +19,8 @@ export default () => {
                         <Route exact path="/">
                             <HomeScreen />
                         </Route>
-                        <Route path="/tela2/:nome">
-                            <Tela2Screen />
+                        <Route path="/second-screen">
+                            <SecondScreen />
                         </Route>
                     </Switch>
                 </PageBody>
