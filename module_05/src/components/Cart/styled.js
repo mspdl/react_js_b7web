@@ -20,13 +20,13 @@ export const CartHeader = styled.div`
 export const CartIcon = styled.img`
     width: 23px;
     height: auto;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 0px 10px;
 `;
 
 export const CartText = styled.div`
     color: #FFFFFF;
     font-size: 17px;
+    font-weight: bold;
 `;
 
 export const CartBody = styled.div``;
