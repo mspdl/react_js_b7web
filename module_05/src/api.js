@@ -1,4 +1,4 @@
-let BASE_URL = 'https://api.b7web.com.br/devsfood/api'
+let BASE_URL = 'https://api.b7web.com.br/devsfood/api';
 
 export default {
     getCategories: async () => {
