@@ -1,14 +1,17 @@
-import React from 'react';
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
 import Header from '../../components/Header';
 import { Container } from './styled';
 
 export default () => {
-    const history = useHistory();
+
+    const [headerSearch, setHeaderSearch] = useState('')
 
     return (
         <Container>
-            <Header />
+            <Header
+                search={headerSearch}
+                onSearch={setHeaderSearch}
+            />
         </Container>
     );
 }
