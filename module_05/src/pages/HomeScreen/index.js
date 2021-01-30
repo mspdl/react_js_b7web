@@ -22,6 +22,10 @@ export default () => {
         getCategories();
     }, []);
 
+    useEffect(() => {
+
+    }, [activeCategory]);
+
     return (
         <Container>
             <Header search={headerSearch} onSearch={setHeaderSearch} />
@@ -36,12 +40,14 @@ export default () => {
                                 image: '/assets/food-and-restaurant.png'
                             }}
                             activeCategory={activeCategory}
+                            setActiveCategory={setActiveCategory}
                         />
                         {categories.map((category, index) => (
                             <CategoryItem
                                 key={index}
                                 data={category}
                                 activeCategory={activeCategory}
+                                setActiveCategory={setActiveCategory}
                             />
                         ))}
                     </CategoryList>
