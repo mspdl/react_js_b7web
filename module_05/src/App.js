@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ReactToolTip from 'react-tooltip';
 import { Container, Menu, PageBody } from './AppStyled';
 import Cart from './components/Cart';
 import MenuItem from './components/MenuItem';
@@ -12,9 +13,9 @@ export default () => {
         <BrowserRouter>
             <Container>
                 <Menu>
-                    <MenuItem icon="/assets/store.png" link="/" />
-                    <MenuItem icon="/assets/order.png" link="/orders" />
-                    <MenuItem icon="/assets/profile.png" link="/profile" />
+                    <MenuItem title="Store" icon="/assets/store.png" link="/" />
+                    <MenuItem title="Orders" icon="/assets/order.png" link="/orders" />
+                    <MenuItem title="Profile" icon="/assets/profile.png" link="/profile" />
                 </Menu>
                 <PageBody>
                     <Switch>
@@ -33,6 +34,8 @@ export default () => {
                     </Switch>
                 </PageBody>
                 <Cart />
+                <ReactToolTip id="tip-top" place="top" effect="solid" />
+                <ReactToolTip id="tip-right" place="right" effect="solid" />
             </Container>
         </BrowserRouter>
     );

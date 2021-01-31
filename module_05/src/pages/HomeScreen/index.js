@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactTooltip from 'react-tooltip';
 import api from '../../api';
 import CategoryItem from '../../components/CategoryItem';
 import Header from '../../components/Header';
@@ -16,8 +17,9 @@ export default () => {
         if (categoriesFromAPI.error === '') {
             setCategories(categoriesFromAPI.result);
         }
+        ReactTooltip.rebuild();
     }
-
+    
     useEffect(() => {
         getCategories();
     }, []);
@@ -36,7 +38,7 @@ export default () => {
                         <CategoryItem
                             data={{
                                 id: 0,
-                                title: 'All categories',
+                                name: 'All categories',
                                 image: '/assets/food-and-restaurant.png'
                             }}
                             activeCategory={activeCategory}
