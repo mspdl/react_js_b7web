@@ -49,6 +49,11 @@ export default () => {
         getProducts();
     }, [activeCategory]);
 
+    useEffect(() => {
+        setProducts([]);
+        getProducts();
+    }, [activeCategory, activePage]);
+
     return (
         <Container>
             <Header search={headerSearch} onSearch={setHeaderSearch} />
@@ -89,10 +94,15 @@ export default () => {
                 </ProductArea>
             }
 
-            {totalPages > 0 &&
+            {totalPages > 1 &&
                 <ProductPaginationArea>
                     {Array(totalPages).fill(0).map((productPage, index) => (
-                        <ProductPaginationItem key={index}>
+                        <ProductPaginationItem
+                            key={index}
+                            active={activePage}
+                            current={index + 1}
+                            onClick={() => setActivePage(index + 1)}
+                        >
                             {index + 1}
                         </ProductPaginationItem>
                     ))}
