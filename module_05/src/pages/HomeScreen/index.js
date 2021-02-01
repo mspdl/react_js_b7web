@@ -4,20 +4,32 @@ import api from '../../api';
 import CategoryItem from '../../components/CategoryItem';
 import Header from '../../components/Header';
 import ProductItem from '../../components/ProductItem';
-import { CategoryArea, CategoryList, Container, ProductArea, ProductList } from './styled';
+import {
+    CategoryArea,
+    CategoryList,
+    Container,
+    ProductArea,
+    ProductList,
+    ProductPaginationArea,
+    ProductPaginationItem
+} from './styled';
 
 export default () => {
 
     const [headerSearch, setHeaderSearch] = useState('');
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
+    const [totalPages, setTotalPages] = useState(0);
 
     const [activeCategory, setActiveCategory] = useState(0);
+    const [activePage, setActivePage] = useState(0);
 
     const getProducts = async () => {
         const productsFromAPI = await api.getProducts();
         if (productsFromAPI.error === '') {
             setProducts(productsFromAPI.result.data);
+            setTotalPages(productsFromAPI.result.pages);
+            setActivePage(productsFromAPI.result.page);
         }
     }
 
@@ -75,6 +87,16 @@ export default () => {
                         ))}
                     </ProductList>
                 </ProductArea>
+            }
+
+            {totalPages > 0 &&
+                <ProductPaginationArea>
+                    {Array(totalPages).fill(0).map((productPage, index) => (
+                        <ProductPaginationItem key={index}>
+                            {index + 1}
+                        </ProductPaginationItem>
+                    ))}
+                </ProductPaginationArea>
             }
         </Container>
     );
