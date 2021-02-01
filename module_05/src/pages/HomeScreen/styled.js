@@ -39,4 +39,5 @@ export const ProductPaginationItem = styled.div`
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
     cursor: pointer;
     margin-right: 10px;
+    margin-bottom: 10px;
 `;

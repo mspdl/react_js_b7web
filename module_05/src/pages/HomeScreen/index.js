@@ -14,6 +14,8 @@ import {
     ProductPaginationItem
 } from './styled';
 
+let searchTimer = null;
+
 export default () => {
 
     const [headerSearch, setHeaderSearch] = useState('');
@@ -23,6 +25,7 @@ export default () => {
 
     const [activeCategory, setActiveCategory] = useState(0);
     const [activePage, setActivePage] = useState(0);
+    const [activeSearch, setActiveSearch] = useState('');
 
     const getProducts = async () => {
         const productsFromAPI = await api.getProducts();
@@ -42,6 +45,13 @@ export default () => {
     }
 
     useEffect(() => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+            setActiveSearch(headerSearch);
+        }, 2000);
+    }, [headerSearch]);
+
+    useEffect(() => {
         getCategories();
     }, []);
 
@@ -52,7 +62,7 @@ export default () => {
     useEffect(() => {
         setProducts([]);
         getProducts();
-    }, [activeCategory, activePage]);
+    }, [activeCategory, activePage, activeSearch]);
 
     return (
         <Container>
@@ -94,7 +104,7 @@ export default () => {
                 </ProductArea>
             }
 
-            {totalPages > 1 &&
+            {totalPages > 0 &&
                 <ProductPaginationArea>
                     {Array(totalPages).fill(0).map((productPage, index) => (
                         <ProductPaginationItem
