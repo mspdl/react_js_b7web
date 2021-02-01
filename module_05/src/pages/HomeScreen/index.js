@@ -24,11 +24,11 @@ export default () => {
     const [totalPages, setTotalPages] = useState(0);
 
     const [activeCategory, setActiveCategory] = useState(0);
-    const [activePage, setActivePage] = useState(0);
+    const [activePage, setActivePage] = useState(1);
     const [activeSearch, setActiveSearch] = useState('');
 
     const getProducts = async () => {
-        const productsFromAPI = await api.getProducts();
+        const productsFromAPI = await api.getProducts(activeCategory, activePage, activeSearch);
         if (productsFromAPI.error === '') {
             setProducts(productsFromAPI.result.data);
             setTotalPages(productsFromAPI.result.pages);
@@ -104,7 +104,7 @@ export default () => {
                 </ProductArea>
             }
 
-            {totalPages > 0 &&
+            {totalPages > 1 &&
                 <ProductPaginationArea>
                     {Array(totalPages).fill(0).map((productPage, index) => (
                         <ProductPaginationItem
