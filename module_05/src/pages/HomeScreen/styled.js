@@ -17,7 +17,8 @@ export const CategoryList = styled.div`
 `;
 
 export const ProductArea = styled.div`
-    margin: 20px 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 `;
 
 export const ProductList = styled.div`

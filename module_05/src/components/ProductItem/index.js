@@ -11,7 +11,10 @@ import {
     ProductPrice
 } from './styled';
 
+
 export default ({ data }) => {
+
+    let price = parseInt(data.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     return (
         <Container>
@@ -20,7 +23,9 @@ export default ({ data }) => {
             </ProductPhotoArea>
             <ProductInfoArea>
                 <ProductName>{data.name}</ProductName>
-                <ProductPrice>R$ {data.price}</ProductPrice>
+                <ProductPrice>
+                    {price}
+                </ProductPrice>
                 <ProductIngredients>{data.ingredients}</ProductIngredients>
             </ProductInfoArea>
             <ProductButtonArea>

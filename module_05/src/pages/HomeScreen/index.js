@@ -3,6 +3,7 @@ import ReactTooltip from 'react-tooltip';
 import api from '../../api';
 import CategoryItem from '../../components/CategoryItem';
 import Header from '../../components/Header';
+import Modal from '../../components/Modal';
 import ProductItem from '../../components/ProductItem';
 import {
     CategoryArea,
@@ -22,6 +23,8 @@ export default () => {
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
+
+    const [modalStatus, setModalStatus] = useState(false);
 
     const [activeCategory, setActiveCategory] = useState(0);
     const [activePage, setActivePage] = useState(1);
@@ -118,6 +121,10 @@ export default () => {
                     ))}
                 </ProductPaginationArea>
             }
+
+            <Modal status={modalStatus}>
+                Modal Content
+            </Modal>
         </Container>
     );
 }

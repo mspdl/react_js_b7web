@@ -8,6 +8,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
+    color: #136713;
 `;
 
 export const ProductPhotoArea = styled.div`
@@ -17,7 +18,6 @@ export const ProductPhotoArea = styled.div`
 export const ProductInfoArea = styled.div`
     flex: 1;
     margin: 0px 10px;
-    color: #136713;
 `;
 
 export const ProductButtonArea = styled.div``;
@@ -29,7 +29,7 @@ export const ProductPhoto = styled.img`
 export const ProductName = styled.div`
     font-size: 20px;
     font-weight: bold;
-    `;
+`;
 
 export const ProductPrice = styled.div`
     font-size: 14px;
