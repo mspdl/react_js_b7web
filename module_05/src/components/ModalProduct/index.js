@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Container,
     ProductArea,
@@ -16,9 +16,27 @@ import {
     ProductQuantityText
 } from './styled';
 
-export default (data) => {
+export default (data, setStatus) => {
+    
+    const [quantity, setQuantity] = useState(1);
 
-    let price = parseInt(data.data.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    useEffect(()=>{
+        setQuantity(1);
+    },[data])
+    
+    const handleCancelButton = () => {
+        setStatus(false);
+    }
+
+    const handleMinusQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    }
+
+    const handlePlusQuantity = () => {
+        setQuantity(quantity + 1);
+    }
 
     return (
         <Container>
@@ -31,18 +49,18 @@ export default (data) => {
                     </ProductDetails>
                     <ProductQuantityAndPriceArea>
                         <ProductQuantity>
-                            <ProductQuantityImage src="/assets/minus.png" />
-                            <ProductQuantityText>9</ProductQuantityText>
-                            <ProductQuantityImage src="/assets/plus.png" />
+                            <ProductQuantityImage onClick={handleMinusQuantity} src="/assets/minus.png" />
+                            <ProductQuantityText>{quantity}</ProductQuantityText>
+                            <ProductQuantityImage onClick={handlePlusQuantity} src="/assets/plus.png" />
                         </ProductQuantity>
                         <ProductPrice>
-                            {price}
+                            R$ {(data.data.price * quantity).toFixed(2)}
                         </ProductPrice>
                     </ProductQuantityAndPriceArea>
                 </ProductInfoArea>
             </ProductArea>
             <ProductButtons>
-                <ProductButton small={true}>Cancel</ProductButton>
+                <ProductButton small={true} onClick={handleCancelButton}>Cancel</ProductButton>
                 <ProductButton>Add to Cart</ProductButton>
             </ProductButtons>
         </Container>
