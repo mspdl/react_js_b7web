@@ -9,11 +9,17 @@ import {
     ProductIngredients,
     ProductName,
     ProductPhoto,
-
-    ProductQuantityArea
+    ProductPrice,
+    ProductQuantity,
+    ProductQuantityAndPriceArea,
+    ProductQuantityImage,
+    ProductQuantityText
 } from './styled';
 
 export default (data) => {
+
+    let price = parseInt(data.data.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
     return (
         <Container>
             <ProductArea>
@@ -23,13 +29,20 @@ export default (data) => {
                         <ProductName>{data.data.name}</ProductName>
                         <ProductIngredients>{data.data.ingredients}</ProductIngredients>
                     </ProductDetails>
-                    <ProductQuantityArea>
-                        quantity
-                    </ProductQuantityArea>
+                    <ProductQuantityAndPriceArea>
+                        <ProductQuantity>
+                            <ProductQuantityImage src="/assets/minus.png" />
+                            <ProductQuantityText>9</ProductQuantityText>
+                            <ProductQuantityImage src="/assets/plus.png" />
+                        </ProductQuantity>
+                        <ProductPrice>
+                            {price}
+                        </ProductPrice>
+                    </ProductQuantityAndPriceArea>
                 </ProductInfoArea>
             </ProductArea>
             <ProductButtons>
-                <ProductButton>Cancel</ProductButton>
+                <ProductButton small={true}>Cancel</ProductButton>
                 <ProductButton>Add to Cart</ProductButton>
             </ProductButtons>
         </Container>
