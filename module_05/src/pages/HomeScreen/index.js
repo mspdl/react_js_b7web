@@ -4,6 +4,7 @@ import api from '../../api';
 import CategoryItem from '../../components/CategoryItem';
 import Header from '../../components/Header';
 import Modal from '../../components/Modal';
+import ModalProduct from '../../components/ModalProduct';
 import ProductItem from '../../components/ProductItem';
 import {
     CategoryArea,
@@ -123,11 +124,7 @@ export default () => {
             }
 
             <Modal status={modalStatus} setStatus={setModalStatus}>
-                Modal Content
-                <div style={{backgroundColor: '#FF0000', width: 600, height: 400}}>
-
-                </div>
-                End of the Content
+                <ModalProduct />
             </Modal>
         </Container>
     );
