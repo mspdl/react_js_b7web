@@ -9,14 +9,18 @@ import {
     ProductQuantityArea
 } from './styled';
 
-export default () => {
+export default (data) => {
     return (
         <Container>
             <ProductArea>
-                <ProductPhoto src="" />
+                <ProductPhoto src={data.data.image} />
                 <ProductInfoArea>
-                    <ProductDetails></ProductDetails>
-                    <ProductQuantityArea></ProductQuantityArea>
+                    <ProductDetails>
+                        {data.data.name}
+                    </ProductDetails>
+                    <ProductQuantityArea>
+                        quantity
+                    </ProductQuantityArea>
                 </ProductInfoArea>
             </ProductArea>
             <ProductButtons>

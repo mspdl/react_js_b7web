@@ -12,12 +12,16 @@ import {
 } from './styled';
 
 
-export default ({ data }) => {
+export default ({ data, onClick }) => {
 
     let price = parseInt(data.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+    const handleClick = () => {
+        onClick(data);
+    }
+
     return (
-        <Container>
+        <Container onClick={handleClick}>
             <ProductPhotoArea>
                 <ProductPhoto src={data.image} />
             </ProductPhotoArea>
