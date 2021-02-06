@@ -17,13 +17,13 @@ import {
 } from './styled';
 
 export default (data, setStatus) => {
-    
+
     const [quantity, setQuantity] = useState(1);
 
-    useEffect(()=>{
+    useEffect(() => {
         setQuantity(1);
-    },[data])
-    
+    }, [data])
+
     const handleCancelButton = () => {
         setStatus(false);
     }
@@ -36,6 +36,13 @@ export default (data, setStatus) => {
 
     const handlePlusQuantity = () => {
         setQuantity(quantity + 1);
+    }
+
+    const handleAddToCart = () => {
+        // get information together
+        // // send information to reducer
+
+        setStatus(false);
     }
 
     return (
@@ -61,7 +68,7 @@ export default (data, setStatus) => {
             </ProductArea>
             <ProductButtons>
                 <ProductButton small={true} onClick={handleCancelButton}>Cancel</ProductButton>
-                <ProductButton>Add to Cart</ProductButton>
+                <ProductButton onClick={handleAddToCart}>Add to Cart</ProductButton>
             </ProductButtons>
         </Container>
     );
