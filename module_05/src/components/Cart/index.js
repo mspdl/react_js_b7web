@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     CartArea,
     CartBody,
@@ -18,6 +18,8 @@ import {
 } from './styled';
 export default () => {
 
+    const dispatch = useDispatch();
+
     const products = useSelector(state => state.cart.products);
 
     const [showCartBody, setShowCartBody] = useState(true);
@@ -26,7 +28,11 @@ export default () => {
         setShowCartBody(!showCartBody);
     }
 
-    const handleProductChange = (id, type) => {
+    const handleProductChange = (productId, name, type) => {
+        dispatch({
+            type: 'CHANGE_PRODUCT_QUANTIY',
+            payload: { productId, type }
+        });
     }
 
     return (
@@ -50,12 +56,12 @@ export default () => {
                             <ProductQuantityArea>
                                 <ProductQuantityIcon
                                     src="/assets/minus.png"
-                                    onClick={() => handleProductChange(product.id, '-')}
+                                    onClick={() => handleProductChange(product.id, product.name, '-')}
                                 />
                                 <ProductQuantityText>{product.quantity}</ProductQuantityText>
                                 <ProductQuantityIcon
                                     src="/assets/plus.png"
-                                    onClick={() => handleProductChange(product.id, '+')}
+                                    onClick={() => handleProductChange(product.id,product.name, '+')}
                                 />
                             </ProductQuantityArea>
                         </ProductItem>
