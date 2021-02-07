@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
     Container,
     ProductArea,
@@ -16,7 +17,9 @@ import {
     ProductQuantityText
 } from './styled';
 
-export default (data, setStatus) => {
+export default ({ data, setStatus }) => {
+
+    const dispatch = useDispatch();
 
     const [quantity, setQuantity] = useState(1);
 
@@ -39,20 +42,21 @@ export default (data, setStatus) => {
     }
 
     const handleAddToCart = () => {
-        // get information together
-        // // send information to reducer
-
+        dispatch({
+            type: 'ADD_PRODUCT',
+            payload: { data, quantity }
+        });
         setStatus(false);
     }
 
     return (
         <Container>
             <ProductArea>
-                <ProductPhoto src={data.data.image} />
+                <ProductPhoto src={data.image} />
                 <ProductInfoArea>
                     <ProductDetails>
-                        <ProductName>{data.data.name}</ProductName>
-                        <ProductIngredients>{data.data.ingredients}</ProductIngredients>
+                        <ProductName>{data.name}</ProductName>
+                        <ProductIngredients>{data.ingredients}</ProductIngredients>
                     </ProductDetails>
                     <ProductQuantityAndPriceArea>
                         <ProductQuantity>
@@ -61,7 +65,7 @@ export default (data, setStatus) => {
                             <ProductQuantityImage onClick={handlePlusQuantity} src="/assets/plus.png" />
                         </ProductQuantity>
                         <ProductPrice>
-                            R$ {(data.data.price * quantity).toFixed(2)}
+                            R$ {(data.price * quantity).toFixed(2)}
                         </ProductPrice>
                     </ProductQuantityAndPriceArea>
                 </ProductInfoArea>

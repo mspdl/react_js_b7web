@@ -3,13 +3,27 @@ const initialState = {
     address: [],
     discount: 0,
     delivery: 0
-
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        // case 'SET_NAME':
-        //     return { ...state, name: action.payload.name };
+        case 'ADD_PRODUCT':
+            let products = [];
+            if (state.products) {
+                products = state.products;
+            }
+            let id = action.payload.data.id;
+
+            let index = products.findIndex(item => item.id === id);
+            if (index > -1) {
+                products[index].quantity += action.payload.quantity;
+            } else {
+                products.push({
+                    ...action.payload.data,
+                    quantity: action.payload.quantity
+                });
+            }
+            return { ...state, products };
         default:
             break;
     }
