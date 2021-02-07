@@ -40,12 +40,13 @@ export const ProductArea = styled.div``;
 
 export const ProductItem = styled.div`
     display: flex;
-    margin: 5px 10px;
+    margin: 10px;
 `;
 
 export const ProductPhoto = styled.img`
     width: 64px;
     height: auto;
+    border-radius: 10px;
 `;
 
 export const ProductInfoArea = styled.div`
@@ -62,4 +63,16 @@ export const ProductPrice = styled.div`
     font-size: 13px;
 `;
 
-export const ProductQuantityArea = styled.div``;
+export const ProductQuantityArea = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+export const ProductQuantityIcon = styled.img`
+    width: 12px;
+    height: auto;
+    margin: 0px 5px;
+    cursor: pointer;
+`;
+
+export const ProductQuantityText = styled.div``;

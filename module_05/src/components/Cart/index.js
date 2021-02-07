@@ -12,7 +12,9 @@ import {
     ProductName,
     ProductPhoto,
     ProductPrice,
-    ProductQuantityArea
+    ProductQuantityArea,
+    ProductQuantityIcon,
+    ProductQuantityText
 } from './styled';
 export default () => {
 
@@ -22,6 +24,9 @@ export default () => {
 
     const handleCartHeaderClick = () => {
         setShowCartBody(!showCartBody);
+    }
+
+    const handleProductChange = (id, type) => {
     }
 
     return (
@@ -43,7 +48,15 @@ export default () => {
                                 <ProductPrice>R$ {product.price.toFixed(2).replace('.', ',')}</ProductPrice>
                             </ProductInfoArea>
                             <ProductQuantityArea>
-
+                                <ProductQuantityIcon
+                                    src="/assets/minus.png"
+                                    onClick={() => handleProductChange(product.id, '-')}
+                                />
+                                <ProductQuantityText>{product.quantity}</ProductQuantityText>
+                                <ProductQuantityIcon
+                                    src="/assets/plus.png"
+                                    onClick={() => handleProductChange(product.id, '+')}
+                                />
                             </ProductQuantityArea>
                         </ProductItem>
                     ))}
