@@ -14,8 +14,6 @@ import {
 
 export default ({ data, onClick }) => {
 
-    let price = parseInt(data.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
     const handleClick = () => {
         onClick(data);
     }
@@ -28,7 +26,7 @@ export default ({ data, onClick }) => {
             <ProductInfoArea>
                 <ProductName>{data.name}</ProductName>
                 <ProductPrice>
-                    {price}
+                    R$ {data.price.toFixed(2).replace('.', ',')}
                 </ProductPrice>
                 <ProductIngredients>{data.ingredients}</ProductIngredients>
             </ProductInfoArea>

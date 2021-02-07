@@ -6,7 +6,6 @@ import Cart from './components/Cart';
 import MenuItem from './components/MenuItem';
 import PrivateRoute from './components/PrivateRoute';
 import HomeScreen from './pages/HomeScreen';
-import SecondScreen from './pages/SecondScreen';
 
 export default () => {
     return (
@@ -28,9 +27,6 @@ export default () => {
                         <PrivateRoute path="/profile">
                             <div>PROFILE SCREEN</div>
                         </PrivateRoute>
-                        <Route path="/second-screen">
-                            <SecondScreen />
-                        </Route>
                     </Switch>
                 </PageBody>
                 <Cart />

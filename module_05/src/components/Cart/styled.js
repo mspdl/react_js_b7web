@@ -25,7 +25,7 @@ export const CartIcon = styled.img`
 
 export const CartText = styled.div`
     flex: 1;
-    color: #FFFFFF;
+    color: #FFF;
     font-size: 17px;
     font-weight: bold;
 `;
@@ -33,4 +33,33 @@ export const CartText = styled.div`
 export const CartBody = styled.div`
     display: ${props => props.show ? 'block' : 'none'};
     background-color: #AAE09A;
+    color: #136713;
 `;
+
+export const ProductArea = styled.div``;
+
+export const ProductItem = styled.div`
+    display: flex;
+    margin: 5px 10px;
+`;
+
+export const ProductPhoto = styled.img`
+    width: 64px;
+    height: auto;
+`;
+
+export const ProductInfoArea = styled.div`
+    flex: 1;
+    margin-left: 10px;
+`;
+
+export const ProductName = styled.div`
+    font-size: 15px;
+    font-weight: bold;
+`;
+
+export const ProductPrice = styled.div`
+    font-size: 13px;
+`;
+
+export const ProductQuantityArea = styled.div``;

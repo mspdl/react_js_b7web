@@ -65,7 +65,7 @@ export default ({ data, setStatus }) => {
                             <ProductQuantityImage onClick={handlePlusQuantity} src="/assets/plus.png" />
                         </ProductQuantity>
                         <ProductPrice>
-                            R$ {(data.price * quantity).toFixed(2)}
+                            R$ {(data.price * quantity).toFixed(2).replace('.', ',')}
                         </ProductPrice>
                     </ProductQuantityAndPriceArea>
                 </ProductInfoArea>
