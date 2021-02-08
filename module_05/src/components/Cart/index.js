@@ -6,7 +6,6 @@ import {
     CartHeader,
     CartIcon,
     CartText,
-    ProductArea,
     ProductInfoArea,
     ProductItem,
     ProductName,
@@ -14,30 +13,31 @@ import {
     ProductPrice,
     ProductQuantityArea,
     ProductQuantityIcon,
-    ProductQuantityText
+    ProductQuantityText,
+    ProductsArea
 } from './styled';
 export default () => {
 
     const dispatch = useDispatch();
 
-    const products = useSelector(state => state.cart.products);
+    let products = useSelector(state => state.cart.products);
 
-    const [showCartBody, setShowCartBody] = useState(true);
+    const [showCartBody, setShowCartBody] = useState(false);
 
     const handleCartHeaderClick = () => {
         setShowCartBody(!showCartBody);
     }
 
-    const handleProductChange = (productId, name, type) => {
+    const handleProductChange = (productId, type) => {
         dispatch({
-            type: 'CHANGE_PRODUCT_QUANTIY',
+            type: 'CHANGE_PRODUCT_CART_QUANTIY',
             payload: { productId, type }
         });
     }
 
     return (
         <CartArea>
-            <CartHeader onClick={handleCartHeaderClick}>
+            <CartHeader onClick={handleCartHeaderClick} clickable={products.length > 0 ? true : false}>
                 <CartIcon src="/assets/cart.png" />
                 <CartText>Shopping Cart ({products.length})</CartText>
                 {showCartBody &&
@@ -45,7 +45,10 @@ export default () => {
                 }
             </CartHeader>
             <CartBody show={showCartBody}>
-                <ProductArea>
+                {products.length === 0 &&
+                    <div>Cart is empty</div>
+                }
+                <ProductsArea>
                     {products.map((product) => (
                         <ProductItem key={product.id}>
                             <ProductPhoto src={product.image} />
@@ -56,17 +59,17 @@ export default () => {
                             <ProductQuantityArea>
                                 <ProductQuantityIcon
                                     src="/assets/minus.png"
-                                    onClick={() => handleProductChange(product.id, product.name, '-')}
+                                    onClick={() => handleProductChange(product.id, '-')}
                                 />
                                 <ProductQuantityText>{product.quantity}</ProductQuantityText>
                                 <ProductQuantityIcon
                                     src="/assets/plus.png"
-                                    onClick={() => handleProductChange(product.id,product.name, '+')}
+                                    onClick={() => handleProductChange(product.id, '+')}
                                 />
                             </ProductQuantityArea>
                         </ProductItem>
                     ))}
-                </ProductArea>
+                </ProductsArea>
             </CartBody>
         </CartArea >
     );

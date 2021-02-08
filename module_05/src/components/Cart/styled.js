@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const CartArea = styled.div`
-    background-color: #136713;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     position: fixed;
     bottom: 0;
     right: 30px;
 `;
 
 export const CartHeader = styled.div`
+    background-color: #136713;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     width: 290px;
     height: 50px;
     display: flex;
@@ -31,12 +31,12 @@ export const CartText = styled.div`
 `;
 
 export const CartBody = styled.div`
-    display: ${props => props.show ? 'block' : 'none'};
+    display: ${props => props.show ? 'flex' : 'none'};
     background-color: #AAE09A;
     color: #136713;
 `;
 
-export const ProductArea = styled.div``;
+export const ProductsArea = styled.div``;
 
 export const ProductItem = styled.div`
     display: flex;

@@ -7,10 +7,13 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+    /*
     let products = [];
     if (state.products) {
         products = state.products;
     }
+    */
+   let products = [...state.products];
 
     switch (action.type) {
 
@@ -28,7 +31,7 @@ export default (state = initialState, action) => {
             }
             return { ...state, products };
 
-        case 'CHANGE_PRODUCT_QUANTIY':
+        case 'CHANGE_PRODUCT_CART_QUANTIY':
             let productFound = products.find(product => product.id == action.payload.productId);
             if (productFound) {
                 switch (action.payload.type) {
