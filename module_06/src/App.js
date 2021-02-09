@@ -4,7 +4,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 import React, { useState } from 'react';
 import './App.css';
-import ChatListItem from './components/ChatListItem';
+import ChatListItem from './components/ChatListItem/';
 
 export default () => {
 

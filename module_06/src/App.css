@@ -66,6 +66,12 @@ header {
     padding: 0 10px;
 }
 
+.chatList {
+    flex: 1;
+    background-color: #FFF;
+    overflow-y: auto;
+}
+
 .search-input input {
     flex: 1;
     border: 0;
