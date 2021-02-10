@@ -8,7 +8,7 @@ import ChatListItem from './components/ChatListItem/';
 
 export default () => {
 
-    const [chatList, setChatList] = useState([{}, {}, {}, {}]);
+    const [chatList, setChatList] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]);
 
     return (
         <div className="app-window">
@@ -18,7 +18,11 @@ export default () => {
                     <div className="header-buttons">
                         <div className="header-button">
                             <DonutLargeIcon style={{ color: '#919191' }} />
+                        </div>
+                        <div className="header-button">
                             <ChatIcon style={{ color: '#919191' }} />
+                        </div>
+                        <div className="header-button">
                             <MoreVertIcon style={{ color: '#919191' }} />
                         </div>
                     </div>
@@ -32,7 +36,7 @@ export default () => {
 
                 </div>
 
-                <div className="chatList">
+                <div className="chat-list">
                     {chatList.map((chat, key) => (
                         <ChatListItem
                             key={key}

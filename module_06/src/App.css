@@ -5,7 +5,7 @@
 body {
     background-color: #D2DBDC;
     margin: 0;
-    font-family: 'Segoe UI, Helvetica Neue, Lucida Grande, Arial';
+    font-family: 'Segoe UI', 'Neue Helvetica', 'Lucida Grande', 'Arial';
 }
 
 .app-window {
@@ -66,10 +66,20 @@ header {
     padding: 0 10px;
 }
 
-.chatList {
+.chat-list {
     flex: 1;
     background-color: #FFF;
     overflow-y: auto;
+}
+
+.chat-list::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.chat-list::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .search-input input {
