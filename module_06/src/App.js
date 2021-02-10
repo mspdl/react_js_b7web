@@ -4,11 +4,25 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 import React, { useState } from 'react';
 import './App.css';
+import ChatIntro from './components/ChatIntro';
 import ChatListItem from './components/ChatListItem/';
+import ChatWindow from './components/ChatWindow';
 
 export default () => {
 
-    const [chatList, setChatList] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]);
+    const [chatList, setChatList] = useState([
+        {id: 1, title: 'John', image: 'https://www.w3schools.com/howto/img_avatar.png'},
+        {id: 2, title: 'Annie', image: 'https://www.w3schools.com/howto/img_avatar2.png'},
+        {id: 3, title: 'Danny', image: 'https://www.w3schools.com/howto/img_avatar.png'},
+        {id: 4, title: 'Andrea', image: 'https://www.w3schools.com/howto/img_avatar.png'},
+        {id: 5, title: 'Olivia', image: 'https://www.w3schools.com/howto/img_avatar2.png'},
+        {id: 6, title: 'Oliver', image: 'https://www.w3schools.com/howto/img_avatar.png'},
+        {id: 7, title: 'Sophia', image: 'https://www.w3schools.com/howto/img_avatar2.png'},
+        {id: 8, title: 'William', image: 'https://www.w3schools.com/howto/img_avatar.png'},
+        {id: 9, title: 'Ethan', image: 'https://www.w3schools.com/howto/img_avatar.png'},
+        {id: 10, title: 'Evelyn', image: 'https://www.w3schools.com/howto/img_avatar2.png'},
+    ]);
+    const [activeChat, setActiveChat] = useState({});
 
     return (
         <div className="app-window">
@@ -40,13 +54,20 @@ export default () => {
                     {chatList.map((chat, key) => (
                         <ChatListItem
                             key={key}
+                            onClick={()=>setActiveChat(chat)}
+                            chatInfo={chat}
                         />
                     ))}
                 </div>
             </div>
 
             <div className="content-area">
-                content area
+                {activeChat.id !== undefined &&
+                    <ChatWindow />
+                }
+                {activeChat.id === undefined &&
+                    <ChatIntro />
+                }
             </div>
         </div>
     );

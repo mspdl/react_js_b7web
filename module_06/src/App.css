@@ -90,4 +90,6 @@ header {
     margin-left: 10px;
 }
 
-.content-area {}
+.content-area {
+    flex: 1;
+}
