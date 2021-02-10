@@ -55,6 +55,7 @@ export default () => {
                         <ChatListItem
                             key={key}
                             onClick={()=>setActiveChat(chat)}
+                            active={activeChat.id === chat.id ? true: false }
                             chatInfo={chat}
                         />
                     ))}

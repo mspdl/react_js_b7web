@@ -1,9 +1,9 @@
 import React from 'react';
 import './index.css'
 
-export default ({chatInfo, onClick}) => {
+export default ({ chatInfo, onClick, active }) => {
     return (
-        <div className="chat-list-item"
+        <div className={`chat-list-item ${active ? 'active' : ''}`}
             onClick={onClick}
         >
             <img className="chat-list-item-avatar" src={chatInfo.image} alt="" />
